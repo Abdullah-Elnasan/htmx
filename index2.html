@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>learn htmx</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://unpkg.com/htmx.org@1.9.10"
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+            crossorigin="anonymous"></script>
+    </head>
+
+    <body class="bg-dark">
+        <div>
+            <div class="container">
+                <h1 class="text-white text-center">LEARN HTMX</h1>
+
+                
+                <form hx-post="./api.php?action=add_post" hx-target=".nh-posts" hx-swap="beforeend">
+                    <input name="title" type="text" class="form-control mb-3">
+                    <textarea name="content" class="form-control mb-3" rows="3"></textarea>
+                    <button class="btn btn-primary">Add post</button>
+                </form>
+
+
+                <div class="row align-items-start nh-posts" hx-get="./api.php?action=get_posts" hx-trigger="load once,post_update,post_deleted"></div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
